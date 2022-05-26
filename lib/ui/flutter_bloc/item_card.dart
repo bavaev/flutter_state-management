@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homework_13/business/flutter_bloc/bloc/cart_bloc.dart';
 
 class ItemCard extends StatelessWidget {
-  final item;
+  final Map<String, dynamic> item;
 
-  ItemCard({Key? key, this.item}) : super(key: key);
+  const ItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

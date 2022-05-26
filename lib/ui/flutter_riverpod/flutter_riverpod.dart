@@ -17,7 +17,7 @@ class FlutterRiverpod extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ListPage(),
+        home: const ListPage(),
       ),
     );
   }

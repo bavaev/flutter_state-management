@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:homework_13/ui/mobx/list_page.dart';
 import 'package:homework_13/business/mobx/state.dart';
@@ -18,7 +17,7 @@ class MobX extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ListPage(),
+        home: const ListPage(),
       ),
     );
   }

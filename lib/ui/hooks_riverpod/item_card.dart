@@ -4,9 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:homework_13/ui/hooks_riverpod/hooks_riverpod.dart';
 
 class ItemCard extends ConsumerWidget {
-  final item;
+  final Map<String, dynamic> item;
 
-  const ItemCard({Key? key, this.item}) : super(key: key);
+  const ItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

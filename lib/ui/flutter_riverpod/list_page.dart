@@ -7,7 +7,7 @@ import 'package:homework_13/ui/flutter_riverpod/flutter_riverpod.dart';
 import 'package:homework_13/ui/flutter_riverpod/item_card.dart';
 
 class ListPage extends ConsumerStatefulWidget {
-  ListPage({Key? key}) : super(key: key);
+  const ListPage({Key? key}) : super(key: key);
 
   @override
   ConsumerState<ListPage> createState() => _ListPageState();

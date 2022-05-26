@@ -7,6 +7,8 @@ import 'package:homework_13/business/flutter_bloc/cart.dart';
 import 'package:homework_13/ui/flutter_bloc/item_card.dart';
 
 class ListPage extends StatelessWidget {
+  const ListPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

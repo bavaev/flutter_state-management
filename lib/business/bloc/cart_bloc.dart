@@ -16,10 +16,7 @@ class CartBloc {
   Stream<List<String>> get outputStateStream => _outputStateController.stream;
 
   void _mapEventToState(CartEvent event) {
-    if (event is CartEvent) {
-      print(event.id.runtimeType);
-      _cart.contains(event.id) ? _cart.remove(event.id) : _cart.add(event.id);
-    }
+    _cart.contains(event.id) ? _cart.remove(event.id) : _cart.add(event.id);
 
     _outputStateController.sink.add(_cart);
   }

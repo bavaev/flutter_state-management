@@ -16,7 +16,6 @@ abstract class _CartAction with Store {
   @observable
   @action
   Future<void> cartAction(String id) async {
-    print(listFuture);
     listFuture = ObservableFuture(loadCartItems(value));
     List<String> list = await listFuture;
     list.contains(id) ? value.remove(id) : value.add(id);

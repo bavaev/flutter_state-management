@@ -5,9 +5,9 @@ import 'package:redux/redux.dart';
 import 'package:homework_13/business/redux/state.dart';
 
 class ItemCard extends StatelessWidget {
-  final item;
+  final Map<String, dynamic> item;
 
-  const ItemCard({Key? key, this.item}) : super(key: key);
+  const ItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

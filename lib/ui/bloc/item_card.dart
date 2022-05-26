@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:homework_13/business/bloc/cart_bloc.dart';
 
 class ItemCard extends StatelessWidget {
-  final item;
+  final Map<String, dynamic> item;
 
-  ItemCard({Key? key, this.item}) : super(key: key);
+  ItemCard({Key? key, required this.item}) : super(key: key);
 
   final CartBloc _bloc = CartBloc();
 
-  @override
   void dispose() {
     _bloc.dispose();
   }
@@ -40,7 +39,7 @@ class ItemCard extends StatelessWidget {
           Text(item['name']),
           StreamBuilder(
             stream: _bloc.outputStateStream,
-            initialData: [],
+            initialData: const [],
             builder: (context, AsyncSnapshot snapshot) {
               return snapshot.data.contains(item['id'])
                   ? IconButton(

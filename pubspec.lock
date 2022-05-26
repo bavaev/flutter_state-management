@@ -238,7 +238,7 @@ packages:
     source: hosted
     version: "0.10.0"
   flutter_riverpod:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
@@ -425,7 +425,7 @@ packages:
     source: hosted
     version: "5.0.0"
   riverpod:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: riverpod
       url: "https://pub.dartlang.org"

@@ -21,7 +21,7 @@ class FlutterBloc extends StatelessWidget {
         create: (context) => CartBloc(
           cartAction: cartAction,
         )..add(CartStarted()),
-        child: ListPage(),
+        child: const ListPage(),
       ),
     );
   }

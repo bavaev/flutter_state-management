@@ -6,6 +6,8 @@ import 'package:homework_13/ui/bloc/item_card.dart';
 import 'package:homework_13/business/bloc/cart_bloc.dart';
 
 class ListPage extends StatelessWidget {
+  ListPage({Key? key}) : super(key: key);
+
   final CartBloc _bloc = CartBloc();
 
   @override
@@ -43,7 +45,7 @@ class ListPage extends StatelessWidget {
       ),
       floatingActionButton: StreamBuilder(
         stream: _bloc.outputStateStream,
-        initialData: [],
+        initialData: const [],
         builder: (context, AsyncSnapshot snapshot) {
           return FloatingActionButton.extended(
             onPressed: null,

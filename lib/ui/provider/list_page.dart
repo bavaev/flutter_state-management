@@ -7,7 +7,7 @@ import 'package:homework_13/business/items.dart';
 import 'package:homework_13/ui/provider/item_card.dart';
 
 class ListPage extends StatefulWidget {
-  ListPage({Key? key}) : super(key: key);
+  const ListPage({Key? key}) : super(key: key);
 
   @override
   State<ListPage> createState() => _ListPageState();

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:homework_13/ui/flutter_riverpod/flutter_riverpod.dart';
-import 'package:homework_13/business/items.dart';
 
 class ItemCard extends ConsumerWidget {
-  final item;
+  final Map<String, dynamic> item;
 
-  const ItemCard({Key? key, this.item}) : super(key: key);
+  const ItemCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
