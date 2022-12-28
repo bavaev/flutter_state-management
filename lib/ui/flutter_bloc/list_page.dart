@@ -37,7 +37,7 @@ class ListPage extends StatelessWidget {
               );
             default:
               return const Center(
-                child: Text('Информации не найдено'),
+                child: Text('Data not found'),
               );
           }
         },

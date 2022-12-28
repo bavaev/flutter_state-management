@@ -24,8 +24,7 @@ mixin _$CartAction on _CartAction, Store {
     });
   }
 
-  late final _$listFutureAtom =
-      Atom(name: '_CartAction.listFuture', context: context);
+  late final _$listFutureAtom = Atom(name: '_CartAction.listFuture', context: context);
 
   @override
   ObservableFuture<List<String>> get listFuture {
@@ -40,8 +39,7 @@ mixin _$CartAction on _CartAction, Store {
     });
   }
 
-  late final _$cartActionAsyncAction =
-      AsyncAction('_CartAction.cartAction', context: context);
+  late final _$cartActionAsyncAction = AsyncAction('_CartAction.cartAction', context: context);
 
   @override
   Future<void> cartAction(String id) {

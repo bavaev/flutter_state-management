@@ -38,9 +38,10 @@ class ItemCard extends StatelessWidget {
           Observer(
             builder: (_) {
               if (store.listFuture.status == FutureStatus.fulfilled) {
-                return store.value.contains(item['id'])
-                    ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => store.cartAction(item['id']))
-                    : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => store.cartAction(item['id']));
+                return IconButton(
+                  icon: store.value.contains(item['id']) ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.add_shopping_cart_outlined),
+                  onPressed: () => store.cartAction(item['id']),
+                );
               }
               return const CircularProgressIndicator();
             },

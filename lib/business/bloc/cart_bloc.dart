@@ -9,7 +9,7 @@ class CartEvent {
 class CartBloc {
   final List<String> _cart = [];
 
-  final _inputEventController = StreamController<CartEvent>();
+  final _inputEventController = StreamController<CartEvent>.broadcast();
   StreamSink<CartEvent> get inputEventSink => _inputEventController.sink;
 
   final _outputStateController = StreamController<List<String>>();

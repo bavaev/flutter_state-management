@@ -45,7 +45,7 @@ class _ListPageState extends State<ListPage> {
               );
             default:
               return const Center(
-                child: Text('Информации не найдено'),
+                child: Text('Data not found'),
               );
           }
         },

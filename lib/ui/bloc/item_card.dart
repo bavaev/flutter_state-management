@@ -4,14 +4,15 @@ import 'package:homework_13/business/bloc/cart_bloc.dart';
 
 class ItemCard extends StatelessWidget {
   final Map<String, dynamic> item;
+  final CartBloc bloc;
+  final bool contain;
 
-  ItemCard({Key? key, required this.item}) : super(key: key);
-
-  final CartBloc _bloc = CartBloc();
-
-  void dispose() {
-    _bloc.dispose();
-  }
+  const ItemCard({
+    Key? key,
+    required this.item,
+    required this.bloc,
+    required this.contain,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +38,10 @@ class ItemCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(item['name']),
-          StreamBuilder(
-            stream: _bloc.outputStateStream,
-            initialData: const [],
-            builder: (context, AsyncSnapshot snapshot) {
-              return snapshot.data.contains(item['id'])
-                  ? IconButton(
-                      icon: const Icon(Icons.shopping_cart_rounded),
-                      onPressed: () => _bloc.inputEventSink.add(CartEvent(item['id'])),
-                    )
-                  : IconButton(
-                      icon: const Icon(Icons.add_shopping_cart_outlined),
-                      onPressed: () => _bloc.inputEventSink.add(CartEvent(item['id'])),
-                    );
-            },
-          )
+          IconButton(
+            icon: contain ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.add_shopping_cart_outlined),
+            onPressed: () => bloc.inputEventSink.add(CartEvent(item['id'])),
+          ),
         ],
       ),
     );

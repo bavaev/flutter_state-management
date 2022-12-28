@@ -42,7 +42,7 @@ class _ListPageState extends ConsumerState<ListPage> {
                 );
               default:
                 return const Center(
-                  child: Text('Информации не найдено'),
+                  child: Text('Data not found'),
                 );
             }
           },
@@ -50,11 +50,11 @@ class _ListPageState extends ConsumerState<ListPage> {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
           label: Consumer(
-            builder: ((context, ref, _) => Text(ref.watch(flutterRiverpod).list.length.toString())),
+            builder: ((context, ref, _) => Text(ref.watch(hooksRiverpod).list.length.toString())),
           ),
           icon: Consumer(
             builder: ((context, ref, _) =>
-                ref.watch(flutterRiverpod).list.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined)),
+                ref.watch(hooksRiverpod).list.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined)),
           ),
         ));
   }

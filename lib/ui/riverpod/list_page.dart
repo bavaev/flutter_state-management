@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:convert';
 
 import 'package:homework_13/data/get_data.dart';
-import 'package:homework_13/ui/flutter_riverpod/flutter_riverpod.dart';
-import 'package:homework_13/ui/flutter_riverpod/item_card.dart';
+import 'package:homework_13/ui/riverpod/riverpod.dart';
+import 'package:homework_13/ui/riverpod/item_card.dart';
 
 class ListPage extends ConsumerStatefulWidget {
   const ListPage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _ListPageState extends ConsumerState<ListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Riverpod'),
+          title: const Text('Riverpod'),
         ),
         body: FutureBuilder(
           future: fetchFile('assets/furniture.json'),
@@ -42,7 +42,7 @@ class _ListPageState extends ConsumerState<ListPage> {
                 );
               default:
                 return const Center(
-                  child: Text('Информации не найдено'),
+                  child: Text('Data not found'),
                 );
             }
           },
@@ -50,11 +50,11 @@ class _ListPageState extends ConsumerState<ListPage> {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
           label: Consumer(
-            builder: ((context, ref, _) => Text(ref.watch(flutterRiverpod).list.length.toString())),
+            builder: ((context, ref, _) => Text(ref.watch(riverpod).list.length.toString())),
           ),
           icon: Consumer(
             builder: ((context, ref, _) =>
-                ref.watch(flutterRiverpod).list.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined)),
+                ref.watch(riverpod).list.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined)),
           ),
         ));
   }

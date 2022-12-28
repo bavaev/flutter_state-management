@@ -37,9 +37,10 @@ class ItemCard extends StatelessWidget {
           StoreConnector<List<String>, List<String>>(
               converter: ((store) => store.state),
               builder: (context, state) {
-                return state.contains(item['id'])
-                    ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => store.dispatch(CartAction(item['id'])))
-                    : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => store.dispatch(CartAction(item['id'])));
+                return IconButton(
+                  icon: state.contains(item['id']) ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.add_shopping_cart_outlined),
+                  onPressed: () => store.dispatch(CartAction(item['id'])),
+                );
               }),
         ],
       ),

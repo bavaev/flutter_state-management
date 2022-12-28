@@ -9,51 +9,60 @@ class ListPage extends StatelessWidget {
   ListPage({Key? key}) : super(key: key);
 
   final CartBloc _bloc = CartBloc();
+  late List<String> cart;
+
+  void dispose() {
+    _bloc.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bloc'),
-      ),
-      body: FutureBuilder(
-        future: fetchFile('assets/furniture.json'),
-        builder: (context, AsyncSnapshot snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.active:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case ConnectionState.waiting:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case ConnectionState.done:
-              List<dynamic> items = jsonDecode(snapshot.data);
-              return ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return ItemCard(item: items[index]);
-                },
-              );
-            default:
-              return const Center(
-                child: Text('Информации не найдено'),
-              );
-          }
-        },
-      ),
-      floatingActionButton: StreamBuilder(
-        stream: _bloc.outputStateStream,
-        initialData: const [],
-        builder: (context, AsyncSnapshot snapshot) {
-          return FloatingActionButton.extended(
+    return StreamBuilder(
+      stream: _bloc.outputStateStream,
+      builder: (context, snapshot) {
+        cart = snapshot.hasData ? snapshot.data as List<String> : [];
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Pattern BLoC'),
+          ),
+          body: FutureBuilder(
+            future: fetchFile('assets/furniture.json'),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.active:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case ConnectionState.waiting:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case ConnectionState.done:
+                  List<dynamic> items = jsonDecode(snapshot.data);
+                  return ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return ItemCard(
+                        item: items[index],
+                        bloc: _bloc,
+                        contain: cart.contains(items[index]['id']),
+                      );
+                    },
+                  );
+                default:
+                  return const Center(
+                    child: Text('Data not found'),
+                  );
+              }
+            },
+          ),
+          floatingActionButton: FloatingActionButton.extended(
             onPressed: null,
-            label: Text(snapshot.data.length.toString()),
-            icon: snapshot.data.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined),
-          );
-        },
-      ),
+            label: Text(cart.isNotEmpty ? cart.length.toString() : '0'),
+            icon: cart.isNotEmpty ? const Icon(Icons.shopping_cart_rounded) : const Icon(Icons.shopping_cart_outlined),
+          ),
+        );
+      },
     );
   }
 }

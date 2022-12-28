@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:homework_13/ui/flutter_riverpod/flutter_riverpod.dart';
+import 'package:homework_13/ui/riverpod/riverpod.dart';
 
 class ItemCard extends ConsumerWidget {
   final Map<String, dynamic> item;
@@ -33,9 +33,9 @@ class ItemCard extends ConsumerWidget {
         children: [
           Text(item['name']),
           Consumer(builder: (context, ref, _) {
-            return ref.watch(flutterRiverpod).list.contains(item['id'])
-                ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => ref.read(flutterRiverpod).cart(item['id']))
-                : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => ref.read(flutterRiverpod).cart(item['id']));
+            return ref.watch(riverpod).list.contains(item['id'])
+                ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => ref.read(riverpod).cart(item['id']))
+                : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => ref.read(riverpod).cart(item['id']));
           }),
         ],
       ),

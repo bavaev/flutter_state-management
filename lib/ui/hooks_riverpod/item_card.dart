@@ -33,9 +33,9 @@ class ItemCard extends ConsumerWidget {
         children: [
           Text(item['name']),
           Consumer(builder: (context, ref, _) {
-            return ref.watch(flutterRiverpod).list.contains(item['id'])
-                ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => ref.read(flutterRiverpod).cart(item['id']))
-                : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => ref.read(flutterRiverpod).cart(item['id']));
+            return ref.watch(hooksRiverpod).list.contains(item['id'])
+                ? IconButton(icon: const Icon(Icons.shopping_cart_rounded), onPressed: () => ref.read(hooksRiverpod).cart(item['id']))
+                : IconButton(icon: const Icon(Icons.add_shopping_cart_outlined), onPressed: () => ref.read(hooksRiverpod).cart(item['id']));
           }),
         ],
       ),
